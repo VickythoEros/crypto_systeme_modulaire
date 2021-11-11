@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+
+{% block header_title %}
+    Système modulaire 1
+{% endblock header_title %}
+
+{% block content %}
+
+    <div>
+        <div class="row mx-auto ">
+                <form class="form" method="post">
+                    {% csrf_token %}
+                    <div class="row mx-auto text-center">
+                        <div class="form-outline col-3">
+                            <input type="number" placeholder="Entrer la valeur de A" id="typeNumber" name="value_a" class="form-control" required />
+                        </div>
+                        <div class="form-outline col-3">
+                            <input type="number" placeholder="Entrer la valeur de B" id="typeNumber" name="value_b" class="form-control" required />
+                        </div>
+                         <div class="form-outline col-3">
+                             <input type="number" placeholder="Entrer la valeur de C" id="typeNumber" name="value_c" class="form-control" required />
+                         </div>
+                         <div class="form-outline col-3">
+                             <input type="number" placeholder="Entrer la valeur de R" id="typeNumber" name="value_r" class="form-control" required />
+                         </div>
+                    </div>
+                    <div  class="row pt-4 mx-auto text-center">
+         
+                      <button type="submit" class="btn btn-primary btn-block btn-lg mt-3">Vérifer</button>
+                    </div>
+                     
+                   </form>
+          
+           
+        </div>
+         
+    </div>
+
+
+    <div class="pt-4">
+
+      {% if  click  %}
+      
+        {% if results %}
+            <div class="mx-auto text-center pt-5 " >  <h2  style="color: green;">  le Triplet ( {{a}},{{b}} ,{{c}} ) avec r = {{r}} est une solution du systeme   </h2>
+        {% else %}
+            <div class="mx-auto text-center pt-5 text-red"  >  <h2 style="color: red;">  le Triplet ( {{a}},{{b}} ,{{c}} ) n'est pas une solution du systeme pour r = {{r}}   </h2>
+
+        {% endif %}
+      {% endif %}
+
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

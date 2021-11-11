@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+
+{% block header_title %}
+    Système modulaire 2
+{% endblock header_title %}
+
+{% block content %}
+
+    <div>
+        <div class="row">
+                <form class="mx-auto" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="row">
+                                <div class="form-outline col-8">
+                                    <label class="form-label text-dark font-weight-bold" for="typeNumber">Entrer la valeur de r </label>
+                                    <input type="number" id="typeNumber" name="value_r" class="form-control" required />
+                                </div>
+                                
+                                <div  class="col-4 pt-3">
+                
+                                    <button type="submit" class="btn btn-primary btn-block btn-lg mt-3">Vérifer</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-8 pt-4">
+                            <div class="row mx-auto pt-2">
+                                <div class="col-3">
+                                    <input type="checkbox" checked data-toggle="toggle" data-on="Containte 1" data-off="Containte 1" data-onstyle="success" data-offstyle="danger" name="contrainte1" id="contrainte1" >
+                                </div>
+                                <div class="col-3">
+                                    <input type="checkbox" data-toggle="toggle" data-on="Containte 2" data-off="Containte 2" data-onstyle="success" data-offstyle="danger" name="contrainte2" onchange="contrainte2();" id="contrainte2">
+                                </div>
+                                <div class="col-3">
+                                    <input type="checkbox" data-toggle="toggle" data-on="Containte 3" data-off="Containte 3" data-onstyle="success" data-offstyle="danger" name="contrainte3" onchange="contrainte3();" id="contrainte3">
+                                </div>
+                                <div class="col-3">
+                                    <input type="checkbox" onchange="contrainte4();" data-toggle="toggle" data-on="Containte 4" data-off="Containte 4" data-onstyle="success" data-offstyle="danger" name="contrainte4" id="contrainte4">
+                                </div>
+                            </div>
+                        </div>
+
+                   </form>
+          
+        </div>
+        
+        <div class=" pt-4">
+            {% if  click  %}
+              <h1 class="font-weight-bold" >Nombre de Solutions  <span class="badge rounded-pill bg-light text-dark ml-5 "> {{number_of_solution}}</span></h1>
+              {% endif %}
+          </div>
+         
+    </div>
+
+
+    <div class="pt-4">
+
+      {% if  click  %}
+        <h1 class="font-weight-bold h1 py-3" style="color: orangered;">
+            Resultats pour r = {{value_r_int}}
+        </h1>
+     
+        {% if  number_of_solution == 0 %}
+                <div class="mx-auto text-center pt-5" >  <h2 >   AUCUNE SOLUTION TROUVEE  </h2>
+        {% endif %}
+        {% if  number_of_solution != 0 %}
+        <table class="table table-striped table-hover">
+          
+            <thead class="table-dark font-weight-bold" >
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">A</th>
+                <th scope="col">B</th>
+                <th scope="col">C</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for elmnt in results %}
+                <tr>
+                  <th scope="row"> {{ forloop.counter }} </th>
+                  {% for i in elmnt %}
+                    <td> {{i}} </td>
+                  {% endfor %}
+                  
+                </tr>
+             
+              {% endfor %}
+             
+            </tbody>
+          </table>
+
+          {% endif %}
+          {% endif %}
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+(function(){
+const contrainte1 =document.getElementById('contrainte1');
+const contrainte2 = document.querySelector('#contrainte2');
+const contrainte3 = document.querySelector('#contrainte3');
+const contrainte4 = document.querySelector('#contrainte4');
+
+contrainte1.addEventListener('change', (event) => {
+  if (event.currentTarget.checked) {
+    alert('checked');
+  } else {
+    alert('not checked');
+  }
+})
+
+function contrainte1()
+{
+    if(document.querySelector('#contrainte1').checked){
+
+        alert('ff')
+    }
+//   if (document.getElementById('xxx').checked) 
+//   {
+//       document.getElementById('totalCost').value = 10;
+//   } else {
+//       calculate();
+//   }
+
+
+}}
+)
+
+document.querySelector("#ajax-call").addEventListener("click", event => {
+    let formData = new FormData();
+    formData.append('a', document.querySelector("#a").value);
+    formData.append('b', document.querySelector("#b").value);
+})
+
+</script>
+
+{% endblock %}

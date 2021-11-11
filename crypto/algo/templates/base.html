@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title> Cryptographie </title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- site icon -->
+      <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/png" />
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+      <!-- site css -->
+      <link rel="stylesheet" href="{% static 'style.css' %}" />
+      <!-- responsive css -->
+      <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
+      <!-- color css -->
+      <link rel="stylesheet" href="{% static 'css/colors.css' %}" />
+      <!-- select bootstrap -->
+      <link rel="stylesheet" href="{% static 'css/bootstrap-select.css' %}" />
+      <!-- scrollbar css -->
+      <link rel="stylesheet" href="{% static 'css/perfect-scrollbar.css' %}" />
+      <!-- custom css -->
+      <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
+      <link href="{% static 'bootstrap-toggle.css' %}" rel="stylesheet">
+      
+   </head>
+   <body class="dashboard dashboard_1">
+
+      <div class="full_container">
+         <div class="inner_container">
+            <!-- Sidebar  -->
+            <nav id="sidebar">
+               <div class="sidebar_blog_1">
+                  <div class="sidebar-header">
+                     <div class="logo_section" >
+                       
+                        <h3 class="pt-5 mx-auto text-center text-white pl-5" >
+                           Cryptographie
+                        </h3>
+                     </div>
+                  </div>
+                
+               </div>
+               <div class="sidebar_blog_2">
+                  <h4></h4>
+                  <ul class="list-unstyled components">
+                     <li><a href="/"><i class="fa fa-align-left  orange_color"></i>  <span>Les Systemes</span></a></li>
+                   
+                   
+                    
+                     <li>
+                        <a href="#element"  data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-object-group yellow_color"></i> <span>Systeme 1</span></a>
+                        <ul class="collapse list-unstyled" id="element">
+                           <li><a href="{% url 'systeme1'  %}"><i class="fa fa-cog purple_color2"></i> <span>Principal</span></a></li>
+                           <li><a href="{% url 'systeme1_verify_1'  %}"><i class="fa fa-cog purple_color2"></i> <span>Verifier un triplet</span></a></li>
+                        </ul>
+                     </li>
+                     <li>
+                        <a href="{% url 'systeme2' %}" ><i class="fa fa-object-group blue2_color"></i> <span>Systeme 2</span></a>
+                      
+                     </li>
+
+
+                  </ul>
+               </div>
+            </nav>
+            <!-- end sidebar -->
+
+            <!-- right content -->
+            <div id="content">
+               <!-- topbar -->
+               <div class="topbar">
+                  <nav class="navbar navbar-expand-lg navbar-light">
+                     <div class="full">
+                        <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>     
+
+                     </div>
+                  </nav>
+               </div>
+               <!-- end topbar -->
+               <!-- dashboard inner -->
+               <div class="midde_cont">
+                  <div class="container-fluid">
+
+                        <div class="row column_title">
+                            <div class="col-md-12">
+                            <div class="page_title">
+                                <h2>
+                                    {% block header_title %}
+                                    {% endblock header_title %}
+                                </h2>
+                            </div>
+                            </div>
+                        </div>
+
+                    
+                
+                     {% block content %}
+                     
+                     {% endblock %}
+
+
+
+                  </div>
+               </div>
+               
+
+            </div>
+         </div>
+      </div>
+      <!-- jQuery -->
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/popper.min.js' %}"></script>
+      <script src="{% static 'js/bootstrap.min.js' %}"></script>
+      <!-- wow animation -->
+      <script src="{% static 'js/animate.js' %}"></script>
+      <!-- select country -->
+      <script src="{% static 'js/bootstrap-select.js' %}"></script>
+      <!-- owl carousel -->
+      <script src="{% static 'js/owl.carousel.js' %}"></script> 
+      <!-- chart js -->
+      <script src="{% static 'js/Chart.min.js' %}"></script>
+      <script src="{% static 'js/Chart.bundle.min.js' %}"></script>
+      <script src="{% static 'js/utils.js' %}"></script>
+      <script src="{% static 'js/analyser.js' %}"></script>
+      <!-- nice scrollbar -->
+      <script src="{% static 'js/perfect-scrollbar.min.js' %}"></script>
+      <script>
+         var ps = new PerfectScrollbar('#sidebar');
+      </script>
+      <!-- custom js -->
+      <script src="{% static 'js/custom.js' %}"></script>
+      <script src="{% static 'js/chart_custom_style1.js' %}"></script>
+
+      <script src="{% static 'bootstrap-toggle.js' %}"></script>
+      {% block scripts %}
+                     
+      {% endblock %}
+
+   </body>
+</html>
