@@ -7,5 +7,6 @@ urlpatterns = [
     path('systeme_1/', views.system_1,name="systeme1"),
     path('systeme_1_verify_1/', views.system_1_verify_1,name="systeme1_verify_1"),
     path('systeme_2/', views.system_2,name="systeme2"),
+    path('systeme_2_request/', views.system_2_request,name="systeme2_request"),
     path('admin/', admin.site.urls),
 ]

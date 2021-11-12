@@ -125,87 +125,66 @@ def ensemble_U(n):
 
 
 
-def contrainte1(n,r,tab):
-    tab_result = []
-    U = []
+def contrainte1(r,tab):
+    tab_result,U = [],tab
+    
+    
     if tab:
-        U = tab
-    else:
-        U = ensemble_U(n)
+        for i in U:
+            for j in U:
+                for k in U:
+                    if equation_1(i,j,k,r) :
+                        tab_result.append(i)
+                        tab_result.append(j)
+                        tab_result.append(k)
+                     
+    
+    return tab_result
 
-    for i in U:
-        for j in U:
-            for k in U:
-                if equation_1(i,j,k,r) :
-                    tab_result.append(i)
-                    tab_result.append(j)
-                    tab_result.append(k)
+
+
+def contrainte2(tab):
+    tab_result,U = [],tab
+    if tab:
+        for i in U:
+            for j in U:
+                for k in U:
+                    if equation_2(i,j,k) or equation_3(i,j,k) :
+                        tab_result.append(i)
+                        tab_result.append(j)
+                        tab_result.append(k)
                 
     return tab_result
 
 
 
-def contrainte2(n,tab):
-    tab_result = []
-    U = []
-    if tab:
-        U = tab
-    else:
-        U = ensemble_U(n)
+def contrainte3(tab):
+    tab_result,U = [],tab
 
-    for i in U:
-        for j in U:
-            for k in U:
-                if equation_2(i,j,k) or equation_3(i,j,k) :
-                    tab_result.append(i)
-                    tab_result.append(j)
-                    tab_result.append(k)
-                
+    if tab:
+        for i in U:
+            for j in U:
+                for k in U:
+                    if equation_5(i,j,k):
+                        tab_result.append(i)
+                        tab_result.append(j)
+                        tab_result.append(k)
+                    
     return tab_result
 
 
-
-def contrainte3(n,tab):
-    tab_result = []
-    U = []
+def contrainte4(r,tab):
+    tab_result,U = [],tab
     if tab:
-        U = tab
-    else:
-        U = ensemble_U(n)
-
-    for i in U:
-        for j in U:
-            for k in U:
-                if equation_5(i,j,k):
-                    tab_result.append(i)
-                    tab_result.append(j)
-                    tab_result.append(k)
-                
+        for i in U:
+            for j in U:
+                for k in U:
+                    if equation_6(i,j,k,r) and equation_7(i,j,k,r) :
+                        tab_result.append(i)
+                        tab_result.append(j)
+                        tab_result.append(k)
+                    
     return tab_result
-
-
-
-
-
-def contrainte4(n,r,tab):
-    tab_result = []
-    U = []
-    if tab:
-        U = tab
-    else:
-        U = ensemble_U(n)
-
-    for i in U:
-        for j in U:
-            for k in U:
-                if equation_6(i,j,k,r) and equation_7(i,j,k,r) :
-                    tab_result.append(i)
-                    tab_result.append(j)
-                    tab_result.append(k)
-                
-    return tab_result
-
-
 
 
 

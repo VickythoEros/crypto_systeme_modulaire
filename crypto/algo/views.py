@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .fonctions import *
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 def system_1(request):
 
@@ -84,10 +85,34 @@ def system_2(request):
     return render(request, 'equations/systeme2.html', context)
 
 
+@csrf_exempt
+def system_2_request(request):
+    test1 = request.POST.get('test1')
+    test2 = request.POST.get('test2')
+    test3 = request.POST.get('test3')
+    test4 = request.POST.get('test4')
+    value_r = request.POST.get('value_r')
+   
+    results = ensemble_U(27)
 
-def compute(request):
-    # Calcul de l'opération
-    return JsonResponse({})
+
+    if test1:
+        results = contrainte1(int(value_r),results)
+    
+    if test2:
+        results = contrainte2(results)
+    
+    if test3:
+        results = contrainte3(results)
+    
+    if test4:
+        results = contrainte4(int(value_r),results)
+    
+    print(results)
+
+    context = {"results": results}
+    return JsonResponse(context)
+
 
 def home(request):
     context = {'title': 'Mon super titre'}
